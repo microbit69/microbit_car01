@@ -13,12 +13,14 @@ input.onButtonPressed(Button.B, function () {
     pins.servoWritePin(AnalogPin.P2, servo_stop)
 })
 function set_Servo_backwards (servo_speed: number) {
+    basic.showIcon(IconNames.No)
     // Rechts in Fahrtrichtung
-    pins.servoWritePin(AnalogPin.P1, 75)
-    pins.servoWritePin(AnalogPin.P2, 120)
+    pins.servoWritePin(AnalogPin.P1, 0)
+    // Links in Fahrtrichtung
+    pins.servoWritePin(AnalogPin.P2, 180)
 }
 let servo_stop = 0
-servo_stop = 85
+servo_stop = 90
 let servo_speed = 0
 basic.forever(function () {
 	

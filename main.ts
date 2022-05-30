@@ -13,6 +13,8 @@ function set_Servo_forward (distance_cm: number) {
     control.waitMicros(57000 * distance_cm)
     pins.servoWritePin(AnalogPin.P1, servo_stop)
     pins.servoWritePin(AnalogPin.P2, servo_stop)
+}
+function set_Servo_turn_R (angle_d: number) {
     basic.showLeds(`
         . . # . .
         . # . . .
@@ -22,7 +24,7 @@ function set_Servo_forward (distance_cm: number) {
         `)
     // Links in Fahrtrichtung
     pins.servoWritePin(AnalogPin.P2, 180)
-    control.waitMicros(57000 * distance_cm)
+    control.waitMicros(57000 / 90 * angle_d)
     pins.servoWritePin(AnalogPin.P2, servo_stop)
 }
 input.onButtonPressed(Button.A, function () {
@@ -30,6 +32,7 @@ input.onButtonPressed(Button.A, function () {
     basic.showNumber(2)
     basic.showNumber(1)
     set_Servo_forward(10)
+    set_Servo_turn_R(1)
 })
 input.onButtonPressed(Button.AB, function () {
     pins.servoWritePin(AnalogPin.P1, servo_stop)
